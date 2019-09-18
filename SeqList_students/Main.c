@@ -3,13 +3,13 @@
 int main(void)
 {
 	SeqList myList;
-	int i = 0;
+	int i = 0, j = 0;
 	
 	StudentType x[3] = {{2001, "张三", "男", 20, 60},
 						{2002, "李四", "男", 21, 75},
 						{2003, "王五", "女", 22, 90}};
 						
-	StudentType temp;
+	StudentType temp, temp1;
 	
 	ListInitiate(&myList);
 	
@@ -30,5 +30,24 @@ int main(void)
 			printf("%d	%s	%s	%d	%.1f\n", temp.number, temp.name, temp.sex, temp.age, temp.grade);
 		}
 	}
+	
+	printf("After sorting by grade.\n");
+	
+	ListExchangeAsGrade(&myList);
+	
+	for(i = 0; i < ListLength(myList); i++)
+	{
+		if(ListGet(myList, i, &temp) == 0)
+		{
+			printf("错误！\n");
+			
+			return 0;
+		}
+		else
+		{
+			printf("%d	%s	%s	%d	%.1f\n", temp.number, temp.name, temp.sex, temp.age, temp.grade);
+		}
+	}
+	
 	return 0;
 }
